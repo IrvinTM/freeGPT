@@ -42,11 +42,10 @@ public class NexraGPT {
         
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
+            return new JSONObject(response.body().toString());
         } catch (Exception e) {
-            System.out.println("Joder tenemos un error"+e.toString());
+            System.out.println("There was an error"+e.toString());
         }
-        return body.getJSONBody();
     }
 
     public String getName() {
