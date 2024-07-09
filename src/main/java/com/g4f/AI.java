@@ -1,6 +1,12 @@
 package com.g4f;
 
+import java.util.ArrayList;
+import org.json.JSONObject;
+import com.g4f.providers.NexraGPT;
+
 public class AI {
+    private ArrayList<Message> messages;
+    private String prompt;
     private String model;
     private String type;
     private boolean historyAble;
@@ -12,7 +18,9 @@ public class AI {
         
     }
 
-    public AI(String model, String type, String defaultModel, boolean historyAble, boolean stream, boolean markdown) {
+    public AI(ArrayList<Message> messages, String prompt,String model, String type, String defaultModel, boolean historyAble, boolean stream, boolean markdown) {
+        this.messages = messages;
+        this.prompt = prompt;
         this.model = model;
         this.type = type;
         this.historyAble = historyAble;
@@ -20,8 +28,46 @@ public class AI {
         this.markdown = markdown;
     }
 
-    public getCompletionString(){
-        
+    public String getCompletionString(){
+        NexraGPT gpt = new NexraGPT();
+        gpt.setDefaultModel(this.model);
+        gpt.setMarkdown(this.markdown);
+        gpt.setStream(this.stream);
+        JSONObject response = gpt.getCompletions(this.messages, this.prompt);
+        String messageResponse = response.getString("gpt");
+        return messageResponse;
+    }
+
+    public JSONObject getCompletionJSON(){
+        NexraGPT gpt = new NexraGPT();
+        gpt.setDefaultModel(this.model);
+        gpt.setMarkdown(this.markdown);
+        gpt.setStream(this.stream);
+        JSONObject response = gpt.getCompletions(this.messages, this.prompt);
+        Message assisstantMessage = new Message("assistant", response.getString("gpt"));
+        JSONObject messageResponse = new JSONObject(assisstantMessage);
+        return messageResponse;
+    }
+
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
+    }
+
+    public String getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getModel() {
@@ -32,9 +78,6 @@ public class AI {
     }
     public String getType() {
         return type;
-    }
-    public void setType(String type) {
-        this.type = type;
     }
 
     public boolean isHistoryAble() {
@@ -55,8 +98,4 @@ public class AI {
     public void setMarkdown(boolean markdown) {
         this.markdown = markdown;
     }
-
-    
-
-
 }

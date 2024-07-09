@@ -31,21 +31,21 @@ public class NexraGPT {
 
     }
     
-    public JSONObject getCompletions(ArrayList<Message> msgs, String prompt){
-        RequestBodyNexra body = new RequestBodyNexra(msgs, this.stream, prompt, this.defaultModel, this.markdown);
+    public JSONObject getCompletions(ArrayList<Message> messages, String prompt){
+        RequestBodyNexra body = new RequestBodyNexra(messages, this.stream, prompt, this.defaultModel, this.markdown);
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
         .setHeader("Content-Type", "application/json")
         .uri(URI.create(url))
         .POST(HttpRequest.BodyPublishers.ofString(body.getJSONBody().toString()))
         .build();
-        
+        HttpResponse<String> response = null;
         try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            return new JSONObject(response.body().toString());
+            response = client.send(request, HttpResponse.BodyHandlers.ofString()); 
         } catch (Exception e) {
             System.out.println("There was an error"+e.toString());
         }
+        return new JSONObject(response.body().toString());
     }
 
     public String getName() {
