@@ -23,7 +23,7 @@ public class Main {
         NexraGPT ai = new NexraGPT();
         ai.setDefaultModel("chatgpt");
         ai.setStream(true);
-        ai.getStreamedCompletions(msg, "hello");
+        ai.getStreamedCompletions(msg, "whats my name ?");
 
         // NexraGPT gpt = new NexraGPT();
         // gpt.setDefaultModel("gpt-3.5-turbo");

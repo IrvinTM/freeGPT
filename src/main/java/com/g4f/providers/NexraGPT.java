@@ -55,7 +55,7 @@ public class NexraGPT {
 
     public void getStreamedCompletions(ArrayList<Message> messages, String prompt){
         RequestBodyNexra body = new RequestBodyNexra(messages, this.stream, prompt, this.defaultModel, this.markdown);
-        System.out.println("este es el body"+ body.getJSONBody());
+        System.out.println("aqui el cuerpo"+ body.getJSONBody());
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
         .setHeader("Content-Type", "application/json")
@@ -75,9 +75,17 @@ public class NexraGPT {
             for(String part: parts){
                 try {
                     JSONObject obj = new JSONObject(part);
+                    if (obj.getBoolean("finish")== true) {
+                        break;
+                    }
                     System.out.println(obj.getString("message"));
+                    Thread.sleep(500);
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("");
+                    
+                    
                 } catch (Exception e) {
-                    // TODO: handle exception
+                    System.out.println(e);
                 }
             }
         } catch (Exception e) {
