@@ -39,10 +39,25 @@ public class AI {
     };
 
     
+    /**
+     * Constructs a new instance of the AI class.
+     */
     public AI() {
         
     }
 
+    /**
+     * Constructs a new AI object.
+     *
+     * @param messages     the list of messages
+     * @param prompt       the prompt message
+     * @param model        the model to use
+     * @param type         the type of AI
+     * @param defaultModel the default model
+     * @param historyAble  indicates if history is enabled
+     * @param stream       indicates if streaming is enabled
+     * @param markdown     indicates if markdown is enabled
+     */
     public AI(ArrayList<Message> messages, String prompt,String model, String type, String defaultModel, boolean historyAble, boolean stream, boolean markdown) {
         this.messages = messages;
         this.prompt = prompt;
@@ -98,42 +113,88 @@ public class AI {
     }
 
 
+    /**
+     * Returns the list of messages.
+     *
+     * @return the list of messages
+     */
     public ArrayList<Message> getMessages() {
         return messages;
     }
 
+    /**
+     * Sets the list of messages for this AI.
+     *
+     * @param messages the list of messages to set
+     */
     public void setMessages(ArrayList<Message> messages) {
         this.messages = messages;
     }
 
+    /**
+     * Retrieves the prompt associated with this AI.
+     *
+     * @return the prompt string
+     */
     public String getPrompt() {
         return prompt;
     }
 
+    /**
+     * Sets the prompt for the AI.
+     *
+     * @param prompt the new prompt to set
+     */
     public void setPrompt(String prompt) {
         this.prompt = prompt;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    /**
+     * Returns the model used by the AI.
+     *
+     * @return the model used by the AI
+     */
     public String getModel() {
         return model;
     }
+    /**
+     * Sets the model for the AI, get supported models with the getModels method.
+     * 
+     * @param model the new model to set
+     */
     public void setModel(String model) {
         this.model = model;
     }
+    /**
+     * Returns the type of the AI.
+     *
+     * @return the type of the AI
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Returns a boolean value indicating whether the history is able to be tracked.
+     *
+     * @return true if the history is able to be tracked, false otherwise.
+     */
     public boolean isHistoryAble() {
         return historyAble;
     }
+    /**
+     * Sets whether the AI's history is enabled or disabled.
+     * 
+     * @param historyAble true if the AI's history should be enabled, false otherwise
+     */
     public void setHistoryAble(boolean historyAble) {
         this.historyAble = historyAble;
     }
+    /**
+     * Returns whether the AI is in stream mode or not.
+     *
+     * @return true if the AI is in stream mode, false otherwise.
+     */
     public boolean isStream() {
         return stream;
     }
@@ -143,16 +204,36 @@ public class AI {
      * 
      * @param stream the new value for the stream flag
      */
+    /**
+     * Sets the stream flag.
+     * 
+     * @param stream the new value for the stream flag
+     */
     public void setStream(boolean stream) {
         this.stream = stream;
     }
+    /**
+     * Checks if the content is in Markdown format.
+     *
+     * @return true if the content is in Markdown format, false otherwise.
+     */
     public boolean isMarkdown() {
         return markdown;
     }
+    /**
+     * Sets the markdown flag for the AI.
+     * 
+     * @param markdown true if the AI should use markdown, false otherwise
+     */
     public void setMarkdown(boolean markdown) {
         this.markdown = markdown;
     }
 
+    /**
+     * Returns the array of models.
+     *
+     * @return the array of models
+     */
     public String[] getModels() {
         return models;
     }
