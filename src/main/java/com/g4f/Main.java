@@ -10,12 +10,21 @@ public class Main {
         msg.add(new Message("assistant", "Hello, Yandri! How are you today?."));
     
         AI ai = new AI();
-        ai.setModel("code-davinci-002");
-        ai.setHistoryAble(true);
-        ai.setMessages(msg);
-        ai.setPrompt("what ai model are you?");
+        String[] models = ai.getModels();
+        for (String model: models){
+            ai.setModel(model);
+            System.out.println(model);
+            ai.setPrompt("Cual modelo eres y cual es tu llimite de tokens");
+            System.out.println(ai.getCompletionString());
+            System.out.println();
+        }
+        // ai.setModel("GPT-4");
+        // ai.setHistoryAble(true);
+        // ai.setMessages(msg);
+        // ai.setPrompt("what ai model are you?");
+        // ai.setStream(false);
 
-        System.out.println(ai.getCompletionJSON());
+        // System.out.println(ai.getCompletionJSON());
 
 
         //TODO fix streaming 

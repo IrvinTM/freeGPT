@@ -12,6 +12,31 @@ public class AI {
     private boolean historyAble;
     private boolean stream;
     private boolean markdown;
+    private String[] models ={
+        "gpt-4",
+        "gpt-4-0613",
+        "gpt-4-32k",
+        "gpt-4-0314",
+        "gpt-4-32k-0314",
+        "gpt-3.5-turbo",
+        "gpt-3.5-turbo-16k",
+        "gpt-3.5-turbo-0613",
+        "gpt-3.5-turbo-16k-0613",
+        "gpt-3.5-turbo-0301",
+        "text-davinci-003",
+        "text-davinci-002",
+        "code-davinci-002",
+        "gpt-3",
+        "text-curie-001",
+        "text-babbage-001",
+        "text-ada-001",
+        "davinci",
+        "curie",
+        "babbage",
+        "ada",
+        "babbage-002",
+        "davinci-002"       
+    };
 
     
     public AI() {
@@ -112,6 +137,12 @@ public class AI {
     public boolean isStream() {
         return stream;
     }
+    /**
+     * Experimental feature!! it may not work properly.
+     * Leave it on false for proper completions. Sets the stream flag.
+     * 
+     * @param stream the new value for the stream flag
+     */
     public void setStream(boolean stream) {
         this.stream = stream;
     }
@@ -121,4 +152,9 @@ public class AI {
     public void setMarkdown(boolean markdown) {
         this.markdown = markdown;
     }
+
+    public String[] getModels() {
+        return models;
+    }
+    
 }
