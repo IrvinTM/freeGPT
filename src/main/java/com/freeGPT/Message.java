@@ -1,4 +1,4 @@
-package com.g4f;
+package com.freeGPT;
 
 public class Message {
     private String role;

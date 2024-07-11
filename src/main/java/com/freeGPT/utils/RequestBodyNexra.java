@@ -1,11 +1,11 @@
-package com.g4f.utils;
+package com.freeGPT.utils;
 
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.g4f.Message;
+import com.freeGPT.Message;
 
 public class RequestBodyNexra {
     private ArrayList<Message> messages;

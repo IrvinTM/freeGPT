@@ -1,4 +1,4 @@
-package com.g4f.utils;
+package com.freeGPT.utils;
 
 public class ChatOptions {
     private boolean debug;

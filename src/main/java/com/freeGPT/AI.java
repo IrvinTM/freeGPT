@@ -1,8 +1,8 @@
-package com.g4f;
+package com.freeGPT;
 
 import java.util.ArrayList;
 import org.json.JSONObject;
-import com.g4f.providers.NexraGPT;
+import com.freeGPT.providers.NexraGPT;
 
 public class AI {
     private ArrayList<Message> messages;

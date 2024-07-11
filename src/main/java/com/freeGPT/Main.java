@@ -1,4 +1,4 @@
-package com.g4f;
+package com.freeGPT;
 
 import java.util.ArrayList;
 

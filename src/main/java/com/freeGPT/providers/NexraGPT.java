@@ -1,4 +1,4 @@
-package com.g4f.providers;
+package com.freeGPT.providers;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 
-import com.g4f.Message;
-import com.g4f.utils.RequestBodyNexra;
+import com.freeGPT.Message;
+import com.freeGPT.utils.RequestBodyNexra;
 
 public class NexraGPT {
     private String name;
