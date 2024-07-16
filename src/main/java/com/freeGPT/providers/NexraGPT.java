@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.URL;
-import java.net.URLConnection;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -80,7 +78,6 @@ public class NexraGPT {
                     }
                     System.out.println(obj.getString("message"));
                     Thread.sleep(500);
-                    System.out.print("\033[H\033[2J");
                     System.out.println("");
                     
                     
