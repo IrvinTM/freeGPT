@@ -1,44 +1,38 @@
 package com.freeGPT;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.freeGPT.utils.Stream;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Message> msg = new ArrayList<Message>();
-        msg.add(new Message("assistant", "Hello! How are you today?"));
-        msg.add(new Message("user", "Hello, my name is Yandri."));
-        msg.add(new Message("assistant", "Hello, Yandri! How are you today?."));
     
         AI ai = new AI();
 
         ai.setModel(ai.getModels()[0]);
         System.out.println("using model"+ ai.getModel());
-        Stream.streamText(ai.getCompletionString(), 50);
-        
-    
-        /* ai.getCompletionsStream(); */
-        /* String[] models = ai.getModels();
-        for (String model: models){
-            ai.setModel(model);
-            System.out.println(model);
-            ai.setPrompt("Cual modelo eres y cual es tu llimite de tokens");
-            System.out.println(ai.getCompletionString());
-            System.out.println();
-        } */
-        // ai.setModel("GPT-4");
-        // ai.setHistoryAble(true);
-        // ai.setMessages(msg);
-        // ai.setPrompt("what ai model are you?");
-        // ai.setStream(false);
+        ai.setMessages(msg);
 
-        // System.out.println(ai.getCompletionJSON());
+        Scanner sc  = new Scanner(System.in);
 
 
-        //TODO fix streaming 
+        while (true) {
+            String prompt;
+            String response;
+            prompt = sc.nextLine();
+            if (prompt == "exit") {
+                break;
+            }
+            ai.setPrompt(prompt);
+            response = ai.getCompletionString();
+            Stream.streamText(ai.getCompletionString(), 50);
+            msg.add(new Message("user", prompt));
+            msg.add(new Message("assistant", response));
 
-
+        }
+        sc.close();
     }
 
     
